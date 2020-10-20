@@ -1,4 +1,5 @@
 import argparse
+import time
 
 from src.DeepSEM_cell_type_non_specific_GRN_model import non_celltype_GRN_model
 from src.DeepSEM_cell_type_specific_GRN_model import celltype_GRN_model
@@ -26,6 +27,7 @@ parser.add_argument("--K2", type=int, default=2)
 parser.add_argument("--nonLinear", type=str, default='tanh')
 parser.add_argument("--save_name", type=str, default='/tmp')
 opt = parser.parse_args()
+start_time = time.time()
 if opt.task=='non_celltype_GRN':
     if opt.setting=='default':
         opt.beta = 1
@@ -54,7 +56,7 @@ elif opt.task=='celltype_GRN':
     model.train_model()
 elif opt.task=='generate':
     if opt.setting=='default':
-        opt.beta = 2.5
+        opt.beta = 1
         opt.alpha= 10
         opt.K1 = 1
         opt.K2 = 2
@@ -67,6 +69,7 @@ elif opt.task=='generate':
     model.train_model()
 elif opt.task == 'embedding':
     if opt.setting == 'default':
+        opt.n_epochs=120
         opt.beta = 1
         opt.alpha = 10
         opt.K1 = 1
@@ -76,5 +79,7 @@ elif opt.task == 'embedding':
         opt.lr = 1e-4
         opt.lr_step_size = 0.99
         opt.batch_size = 64
+        opt.K = 1
     model = deepsem_embed(opt)
     model.train_model()
+print('time:',time.time()-start_time)

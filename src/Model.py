@@ -212,4 +212,7 @@ class VAE_EAD(nn.Module):
         loss_cat = (-self.losses.entropy(output['logits'], output['prob_cat']) - np.log(0.1)) * opt.beta
         loss = loss_rec + loss_gauss + loss_cat
         hidden = output['mu_ori']
-        return loss, loss_rec, loss_gauss, loss_cat, dec, y, hidden
+        if generation:
+            return loss, loss_rec, loss_gauss, loss_cat, dec, y, hidden,output['mean']
+        else:
+            return loss, loss_rec, loss_gauss, loss_cat, dec, y, hidden

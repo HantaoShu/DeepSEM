@@ -10,7 +10,7 @@ import torch.optim as optim
 from torch.autograd import Variable
 from torch.utils.data import DataLoader
 from torch.utils.data.dataset import TensorDataset
-from Model import VAE_EAD
+from src.Model import VAE_EAD
 
 parser = argparse.ArgumentParser()
 parser.add_argument("--n_epochs", type=int, default=120, help="number of epochs of training")

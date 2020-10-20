@@ -10,37 +10,15 @@ import torch.optim as optim
 from torch.autograd import Variable
 from torch.utils.data import DataLoader
 from torch.utils.data.dataset import TensorDataset
-from Model import VAE_EAD
-
-parser = argparse.ArgumentParser()
-parser.add_argument("--n_epochs", type=int, default=120, help="number of epochs of training")
-parser.add_argument("--batch_size", type=int, default=64, help="size of the batches")
-parser.add_argument('--data_file', type=str, help='path of input scRNA-seq file.')
-parser.add_argument('--transpose', action='store_true', default=False, help='Transpose the input data.')
-parser.add_argument('--alpha1', type=float, default=10, help='coefficient for L-1 norm of A.')
-parser.add_argument('--beta', type=float, default=1, help='coefficient for KL term.')
-parser.add_argument('--lr', type=float, default=1e-4, help='learning rate.')
-parser.add_argument('--lr_step_size', type=int, default=1, help='step size of LR decay.')
-parser.add_argument('--gamma', type=float, default=0.95, help='LR decay factor.')
-parser.add_argument("--n_hidden", type=int, default=128)
-parser.add_argument("--rep", type=int, default=0)
-parser.add_argument("--K", type=int, default=1)
-parser.add_argument("--K1", type=int, default=1)
-parser.add_argument("--K2", type=int, default=2)
-parser.add_argument("--init", type=int, default=1)
-parser.add_argument("--nonLinear", type=str, default='tanh')
-parser.add_argument("--save_name", type=str, default='/tmp')
+from src.Model import VAE_EAD
 class deepsem_embed:
     def __init__(self,opt):
         self.opt = opt
         self.nonLinear = nn.Tanh()
     def initalize_A(self,data):
         num_genes = data.shape[1]
-        if self.opt.init == 0:
-            A = np.zeros([num_genes, num_genes])
-        elif self.opt.init == 1:
-            A = np.ones([num_genes, num_genes]) / (num_genes - 1) + (np.random.rand(num_genes * num_genes) * 0.0002).reshape(
-                [num_genes, num_genes])
+        A = np.ones([num_genes, num_genes]) / (num_genes - 1) + (np.random.rand(num_genes * num_genes) * 0.0002).reshape(
+            [num_genes, num_genes])
         for i in range(len(A)):
             A[i, i] = 0
         return A
@@ -65,8 +43,8 @@ class deepsem_embed:
         data_values = (data_values - means) / (stds)
         data_values[np.isnan(data_values)] = 0
         data_values[np.isinf(data_values)] = 0
-        data_values = np.maximum(data_values,-10)
-        data_values = np.minimum(data_values,10)
+        data_values = np.maximum(data_values,-15)
+        data_values = np.minimum(data_values,15)
         data = pd.DataFrame(data_values, index=data.index, columns=data.columns)
         num_genes, num_nodes = data.shape[1], data.shape[0]
         TF_mask = np.zeros([num_genes, num_genes])
@@ -122,20 +100,24 @@ class deepsem_embed:
                   np.mean(loss_all), 'mse_loss:', np.mean(mse_rec), 'kl_loss:', np.mean(loss_kl), 'sparse_loss:',
                   np.mean(loss_sparse))
             scheduler.step()
-        data_ids = []
-        embeds1 = []
-        n_rep = 1
-        for _ in range((n_rep)):
-            for i, data_batch in enumerate(dataloader, 0):
-                optimizer.zero_grad()
-                inputs, data_id, dropout_mask = data_batch
-                inputs = Variable(inputs.type(Tensor))
-                loss, loss_rec, loss_gauss, loss_cat, dec, y, hidden = vae(inputs,dropout_mask=dropout_mask.cuda(),temperature=temperature,opt=opt)
-                data_ids.append(data_id.detach().numpy())
-                embeds1.append(hidden.cpu().detach().numpy())
-        data_ids = np.hstack(data_ids)
-        embeds1 = np.vstack(embeds1)
-        import pickle as pkl
-        pkl.dump([data_ids,embeds1],open(str(epoch)+'embed_out.pkl'+str(time.time()),'wb'))
+            if epoch%10==9:
+                data_ids = []
+                embeds1 = []
+                embeds2 = []
+                n_rep = 1
+                for _ in range((n_rep)):
+                    for i, data_batch in enumerate(dataloader, 0):
+                        optimizer.zero_grad()
+                        inputs, data_id, dropout_mask = data_batch
+                        inputs = Variable(inputs.type(Tensor))
+                        loss, loss_rec, loss_gauss, loss_cat, dec, y, hidden,hidden2 = vae(inputs,dropout_mask=dropout_mask.cuda(),temperature=temperature,opt=opt,generation=True)
+                        data_ids.append(data_id.detach().numpy())
+                        embeds1.append(hidden.cpu().detach().numpy())
+                        embeds2.append(hidden2.cpu().detach().numpy())
+                data_ids = np.hstack(data_ids)
+                embeds1 = np.vstack(embeds1)
+                embeds2 = np.vstack(embeds2)
+                import pickle as pkl
+                pkl.dump([data_ids,embeds1,embeds2],open('spec'+opt.data_file.split('/')[-1]+'_'+str(opt.beta) +'_'+ str(epoch)+'embed_out.pkl'+str(time.time()),'wb'))
 
 
