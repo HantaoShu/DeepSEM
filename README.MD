@@ -32,8 +32,8 @@ Simulation_tutorial.ipynb}** for introducing the usage of DeepSEM and reproducin
 
 
 ##  Usage
-DeepSEM take scRNA-seq expression data as input file in tsv, csv, 10X format, or h5ad format provided from Scanpy (genes in rows and cells in columns for tsv and csv).
-The output of DeepSEM is varying for different task.
+DeepSEM take data as input file in tsv, csv, 10X format, or h5ad format provided by Scanpy (genes in rows and cells in columns for tsv and csv).
+The output of DeepSEM is varying for different tasks.
 - GRN Inference task. A tsv file including TF, Target, and predicted GRN edge importance. 
 - Embedding. A h5ad file including the embedding genetated by DeepSEM which are shown in "X" of the AnnData and the 
 low dimension representation which are shown in "obsm['X_pca']".
@@ -58,7 +58,7 @@ Command to run DeepSEM
    ```
 
 
-# Other baseline single-cell RNA-seq package 
+# Baseline methods
 - BEELINE   https://github.com/Murali-group/Beeline
 - scVI  https://github.com/romain-lopez/scVI-reproducibility
 - DCA   https://github.com/theislab/dca
@@ -70,7 +70,7 @@ If you have any question, please feel free to contact to me. \
 Email: sht18@mails.tsinghua.edu.cn, shuht96@gmail.com
 
 ## Reference
-[1] Pratapa, A., Jalihal, A. P., Law, J. N., Bharadwaj, A. & Murali, T. M. Benchmarking algorithms for gene regulatory network inference from single-cell transcriptomic data. Nat. Methods 17, 147–154 (2020).
+[1] Pratapa, A., Jalihal, A. P., Law, J. N., Bharadwaj, A. & Murali, T. M. Benchmarking algorithms for gene regulatory network inference from single-cell transcriptomic data. Nat. Methods 17, 147–154 (2020).\
 [2] Zeisel, A. et al. Brain structure. Cell types in the mouse cortex and hippocampus revealed by single-cell RNA-seq. Science 347, 1138–1142 (2015).
 
 ## License
