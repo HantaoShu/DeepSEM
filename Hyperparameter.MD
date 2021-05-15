@@ -1,4 +1,4 @@
-##Introduce the hyper-parameter used in DeepSEM
+## Introduce the hyper-parameter used in DeepSEM
 
 - n_epochs: Number of Epochs for training DeepSEM.
 - task: Determine which task to run. Select from (non_celltype_GRN,celltype_GRN,embedding,simulation)
