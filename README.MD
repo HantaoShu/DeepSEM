@@ -12,7 +12,7 @@ This directory contains the code and resources of the following paper:
 We introduce DeepSEM, a deep-learning-based approach with novel neural network architecture that can infer gene regulatory network, embed scRNA-seq data, and simulate realistic scRNA-seq data by interpreting different modules.
 
 <p align="center">
-<img  src="fig/Figure_1_github.jpg" width="800" height="400" > 
+<img  src="fig/Figure_1_github.png" width="800" height="400" > 
 </p>
 
 
