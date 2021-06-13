@@ -70,9 +70,6 @@ Command to run DeepSEM
 If you have any question, please feel free to contact to me. \
 Email: sht18@mails.tsinghua.edu.cn, shuht96@gmail.com
 
-## Reference
-[1] Pratapa, A., Jalihal, A. P., Law, J. N., Bharadwaj, A. & Murali, T. M. Benchmarking algorithms for gene regulatory network inference from single-cell transcriptomic data. Nat. Methods 17, 147–154 (2020).\
-[2] Zeisel, A. et al. Brain structure. Cell types in the mouse cortex and hippocampus revealed by single-cell RNA-seq. Science 347, 1138–1142 (2015).
 
 ## License
 DeepSEM is licensed under the MIT License.
