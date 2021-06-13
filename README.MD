@@ -44,7 +44,7 @@ We also provide default hyper-parameters in main.py. Using -h option or read [Hy
 hyper-parameters and provides suggestion for hyper-parameter tuning.
 
 Command to run DeepSEM  
-- Gene Regulation Inference (including cell type specific GRN and cell type non-specific GRN).  
+- Gene Regulation Inference (including cell type specific GRN and cell type non-specific GRN). Note that this is script for non-ensemble version. We recommended to use ensemble streagy by repeating training process for K times (K=10 in our papaer) and use average of the absolute adjacent matrices as final prediction. Details are shown in tutorial/GRN_inference_tutorial.ipynb.  
 	```sh
      python main.py --task celltype_GRN --data_file <scGNA-seq path> --save_name <output path>
 	 python main.py --task non_celltype_GRN --data_file <scGNA-seq path> --save_name <output path>
