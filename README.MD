@@ -61,7 +61,7 @@ Command to run DeepSEM
 
 # Baseline methods
 - BEELINE   https://github.com/Murali-group/Beeline
-- scVI  https://github.com/romain-lopez/scVI-reproducibility
+- scVI  https://github.com/romain-lopez/scVI-reproducibility,https://github.com/YosefLab/scvi-tools
 - DCA   https://github.com/theislab/dca
 - ZIFA  https://github.com/epierson9/ZIFA
 - scGAN/cscGAN  https://github.com/imsb-uke/scGAN
