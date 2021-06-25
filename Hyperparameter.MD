@@ -30,7 +30,7 @@ selected by cross validation between cell line for fair comparison. For exactly 
 Figure 2 and Supplementary Figure 1. Please used the following hyper-parameters:
 
 - Celltype non-specific GRN inference alpha=100,beta=1,n_epochs=90
-- Celltype specific GRN inference alpha=0.1 beta=0.01 n_epochs=150 for hESC and mHSC-E and alpha=1,beta=0.1,
+- Celltype specific GRN inference alpha=0.1 beta=0.01 n_epochs=150 for hESC and mHSC-E and alpha=1,beta=0.01,
 n_epochs=150 for others.
 
 You can also use the default hyper-parameter, the overall performance between the default hyper-parameters and 
