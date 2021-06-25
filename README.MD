@@ -19,7 +19,7 @@ We introduce DeepSEM, a deep-learning-based approach with novel neural network a
 
 ## Dependencies 
 - python 3.7
-- pytorch==1.2.0
+- **pytorch==1.2.0**
 - scanpy==1.6.0
 - numpy==1.14.5
 - pandas==0.17.1
