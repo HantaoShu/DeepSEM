@@ -53,8 +53,8 @@ if opt.task == 'non_celltype_GRN':
     model.train_model()
 elif opt.task == 'celltype_GRN':
     if opt.setting == 'default':
-        opt.beta = 0.01  # we found beta=0.01 alpha =0.1 perform better than alpha=0.1 beta=10 after paper submission
-        opt.alpha = 0.1
+        opt.beta = 0.01  # we found beta=0.01 alpha =1 perform better than alpha=0.1 beta=10 after paper submission
+        opt.alpha = 1
         opt.K1 = 1
         opt.K2 = 2
         opt.n_hidden = 128
@@ -65,7 +65,7 @@ elif opt.task == 'celltype_GRN':
     model = celltype_GRN_model(opt)
     if opt.setting == 'test':
         opt.beta = 0.01
-        opt.alpha = 0.1
+        opt.alpha = 1
         opt.K1 = 1
         opt.K2 = 2
         opt.n_hidden = 128
