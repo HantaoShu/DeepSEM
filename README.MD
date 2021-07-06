@@ -4,7 +4,7 @@
 ## About
 This directory contains the code and resources of the following paper:
 
-<i>"Modeling Gene Regulatory Networks Using Neural Network Architectures" </i>
+*"Modeling Gene Regulatory Networks Using Neural Network Architectures"* publish in ***Nature Computational Science*** (doi:10.1038/s43588-021-00099-8) 
 
 
 
