@@ -51,7 +51,7 @@ Command to run DeepSEM
 	 ```
 - Embedding  
 	```sh
-     python main.py --task celltype_GRN --data_file <scGNA-seq path> --save_name <output path>
+     python main.py --task embedding --data_file <scGNA-seq path> --save_name <output path>
 	 ```
 - Simulation  
     ```sh
