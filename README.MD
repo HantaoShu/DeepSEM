@@ -22,7 +22,7 @@ We introduce DeepSEM, a deep-learning-based approach with novel neural network a
 - **pytorch==1.2.0**
 - scanpy==1.6.0
 - numpy==1.14.5
-- pandas==0.17.1
+- pandas==1.0.0
 - scikit-learn==0.23.2
 
 All dependencies can be installed within a few minutes.
