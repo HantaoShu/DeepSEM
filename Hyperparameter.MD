@@ -44,3 +44,4 @@ novelty and similarity when comparision to real cells. More specific hyper-param
 Suggestion for hyper-parameter tuning: If the MSE loss does not decrease significantly for a long time during the 
 training process. Slightly decrease the hyper-parameter beta can solve this problem (hardly ever happened in our 
 experiments). 
+Suggestion for large dataset: Note that the cell number of all benchmark datasets is less than 1500, so we suggest to subsample cells for each epoch and rational increase number of epoch when for large dataset. We STRONGLY recommend to select TF+highly variable gene for larget dataset.
