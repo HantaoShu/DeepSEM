@@ -33,7 +33,7 @@ Simulation_tutorial.ipynb}** for introducing the usage of DeepSEM and reproducin
 
 
 ##  Usage
-DeepSEM take data as input file in tsv, csv, 10X format, or h5ad format provided by Scanpy (genes in rows and cells in columns for tsv and csv).
+DeepSEM take data as input file in tsv, csv, 10X format, or h5ad format provided by Scanpy (genes in columns and cells in rows for tsv and csv).
 The output of DeepSEM is varying for different tasks.
 - GRN Inference task. A tsv file including TF, Target, and predicted GRN edge importance. 
 - Embedding. A h5ad file including the embedding genetated by DeepSEM which are shown in "X" of the AnnData and the 
