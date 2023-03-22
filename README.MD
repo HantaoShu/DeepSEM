@@ -49,6 +49,7 @@ Command to run DeepSEM
      python main.py --task celltype_GRN --data_file <scGNA-seq path> --save_name <output path> --setting test
 	 python main.py --task non_celltype_GRN --data_file <scGNA-seq path> --save_name <output path> --setting test
 	 ```
+     use --setting test to infer GRN instead of benchmarking.
 - Embedding  
 	```sh
      python main.py --task embedding --data_file <scGNA-seq path> --save_name <output path>
