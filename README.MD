@@ -71,7 +71,7 @@ Command to run DeepSEM
 Some notation are incorrect in published paper. $X = W^TX + Z$ should be $X = XW^T+Z$ (equtation 1), $H_Z = (I-W)^{-1}Z$ should be $H_Z = (I-W^T)^{-1}Z$, and $L = −E_{q(X)} [log p(X|Z)] + \beta KL(q(Z|X)||p(Z)) + \alpha ||W||_1$ should be $L= −E_Z [log p(X|Z)] + \beta KL(q(Z|X)||p(Z)) + \alpha ||W||_1$ (equtation 5).
 
 If you have any question, please feel free to contact to me. \
-Email: sht18@mails.tsinghua.edu.cn, shuht96@gmail.com
+Email: shuht96@gmail.com
 
 
 ## License
